@@ -1,5 +1,54 @@
-<h1>Hello</h1>
+<h1>TaskList Replication in NodeJS, Express and HandleBars.</h1>
+<br />
+<br />
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Info</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{{#each tasks}}
 
-<table class="table-responsive">
-	
+  	
+    
+    <tr class="animate__animated animate__backInDown">
+      <th scope="row">{{this.id}}</th>
+      <td>{{this.title}}</td>
+      <td>{{this.info}}</td>
+      <td>
+      
+
+      	<form action="/api/tasks/{{this.id}}?method=delete" method="POST">
+      		<button type="submit" class="btn btn-danger">X</button>
+      	</form>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
 </table>
+
+<br />
+
+<div class="container">
+
+	<form action="/api/tasks" method="POST">
+	  <div class="form-group">
+	    <label for="">Insert title</label>
+	    <input name="title" type="text" class="form-control" id="" aria-describedby="">
+	    <small id="" class="form-text text-muted"></small>
+	  </div>
+
+	  <div class="form-group">
+	    <label for="">Insert Task info</label>
+	    <input name="info" type="text" class="form-control" id="" aria-describedby=""></input>
+	    <small id="" class="form-text text-muted"></small>
+	  </div>
+	  
+	  <button type="submit" class="btn btn-outline-primary">ADD</button>
+	</form>
+</div>
+
